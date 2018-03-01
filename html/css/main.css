@@ -73,8 +73,8 @@ header{
     display:none
 }
 
-nav>a{
-    color:#fff;
+nav>a,
+.menu>a{
     position:relative;
     display:inline-block;
     font-size:16px;
@@ -84,13 +84,16 @@ nav>a{
     -webkit-transition:all .3s ease;
     opacity:.6
 }
-nav>a:first-child{
+nav>a:first-child,
+.menu>a:first-child{
     margin-left:0
 }
-nav>a:last-child{
+nav>a:last-child,
+.menu>a:last-child{
     margin-right:0
 }
-nav>a:after{
+nav>a:after,
+.menu>a:after{
     position:absolute;
     right:0;
     content:'';
@@ -101,14 +104,20 @@ nav>a:after{
     bottom:0;
     text-decoration:none
 }
-nav>a:hover{
-    color:#fff;
+nav>a:hover,
+nav>a.activo,
+.menu>a:hover,
+.menu>a.activo{
     opacity:1
 }
-nav>a:hover:after{
+nav>a:hover:after,
+nav>a.activo:after,
+.menu>a:hover:after,
+.menu>a.activo:after{
     width:40px
 }
-nav>a.boton{
+nav>a.boton,
+.menu>a.boton{
     background-color:#FFBE2A;
     font-weight:700;
     opacity:1;
@@ -120,8 +129,22 @@ nav>a.boton{
     padding:0 35px;
     border-bottom:3px solid #E88D1A
 }
-nav>a.boton:hover:after{
+nav>a.boton:hover:after,
+.menu>a.boton:hover:after{
     width:0
+}
+nav>a,
+nav>a:hover,
+nav>a.activo{
+    color:#fff
+}
+.menu{
+    padding-top:32px
+}
+.menu>a,
+.menu>a:hover,
+.menu>a.activo{
+    color:#000
 }
 .hidden-desktop{
     display:none
@@ -137,15 +160,102 @@ nav>a.boton:hover:after{
     margin-bottom:12px;
     width:24px
 }
+.contenedor-menu{
+    background-color:#fff;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    padding:40px 0
+}
+.contenedor-proyectos{
+    background-color:#F7F5F6;
+    padding-bottom:56px;
+    padding-top:56px
+}
+.logo-proyecto{
+    margin-bottom:32px
+}
+.info-proyecto{
+    background:url(../img/linea.jpg) bottom center no-repeat
+}
+.info-proyecto h2{
+    font-weight:700;
+    margin-bottom:1rem
+}
+.info-proyecto p{
+    margin-bottom:0
+}
+.contenedor-proyectos .borde-0{
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.contenedor-proyectos .borde-1{
+    border-right:16px solid #00c0ed;
+    -webkit-border-top-right-radius:8px;
+    -moz-border-radius-topright:8px;
+    border-top-right-radius:8px
+}
+.contenedor-proyectos .borde-2{
+    border-left:16px solid #ffbe2a
+}
+.contenedor-proyectos .borde-3{
+    border-right:16px solid #9f9f9f;
+    -webkit-border-bottom-right-radius:8px;
+    -moz-border-radius-bottomright:8px;
+    border-bottom-right-radius:8px
+}
+.separador{
+    margin-top:1rem
+}
 select.inputbox{
     background:#FFBE2A;
     border:none;
     padding:6px 30px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    border-radius:15px;
     color:#fff;
     font-size:15px
+}
+input.form-control{
+    padding:6px 20px;
+    font-size:15px;
+    border:0;
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    border-radius:15px
+}
+input.boton,
+a.boton{
+    background-color:#FFBE2A;
+    font-weight:700;
+    opacity:1;
+    -webkit-border-radius:18px;
+    -moz-border-radius:18px;
+    border-radius:18px;
+    text-decoration:none;
+    color:#fff;
+    padding:6px 0;
+    border-bottom:3px solid #E88D1A;
+    width:100%;
+    border-top:none;
+    border-left:none;
+    border-right:none
+}
+a.boton{
+    display:inline-block;
+    width:200px
+}
+.promo i{
+    color:#FFBE2A;
+    cursor:pointer
+}
+.gris{
+    opacity:.5
 }
 
 /* Portrait tablet to landscape and desktop */

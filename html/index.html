@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet" href="css/main.css">
     <title>Betania</title>
   </head>
@@ -21,7 +22,7 @@
           </label>
           <input type="checkbox" name="" id="open">
           <nav>
-            <a href="#" class="active">HOME</a>
+            <a href="#" class="activo">HOME</a>
             <a href="#">NUESTROS PROYECTOS</a>
             <a href="#">CONÓCENOS</a>
             <a href="#" class="boton">COMPRA TU DEPA AQUÍ</a>
@@ -29,7 +30,6 @@
         </div>
         <div class="clearfix"></div>
       </div>
-      
       <div class="container formulario">
         <div class="row">
           <div class="col-6">
@@ -56,9 +56,33 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-row">
+                <div class="form-row separador">
                   <div class="form-group col-md-6">
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input type="text" class="form-control" placeholder="Nombres" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" class="form-control" placeholder="Apellidos" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-5">
+                    <input type="tel" class="form-control" placeholder="DNI" required>
+                  </div>
+                  <div class="form-group col-md-7">
+                    <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-7">
+                    <input type="tel" class="form-control" placeholder="Teléfono / Celular" required>
+                  </div>
+                  <div class="form-group col-md-5">
+                    <input type="button" class="boton" value="ENVIAR">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-12 text-center promo">
+                    <i class="far fa-check-square fa-lg"></i> Estoy interesado en recibir ofertas y/o promociones.
                   </div>
                 </div>
               </form>
@@ -67,6 +91,89 @@
         </div>
       </div>
     </header>
+    <section class="container contenedor-menu">
+      <div class="row">
+        <div class="col-md-4 col-lg-2">
+          <img src="img/logo-betania-color.svg" alt="Betania Inmobiliaria" class="img-fluid">
+        </div>
+        <div class="col-md-8 col-lg-10">
+          <div class="menu float-right">
+            <a href="#">HOME</a>
+            <a href="#" class="activo">NUESTROS PROYECTOS</a>
+            <a href="#">CONÓCENOS</a>
+            <a href="#" class="boton">COMPRA TU DEPA AQUÍ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-fluid contenedor-proyectos">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5 text-center">
+            <img src="img/logo-metropoli.png" class="img-fluid logo-proyecto" alt="">
+            <div class="info-proyecto">
+              <div class="row">
+                <div class="col-md-6">
+                  <h2 class="text-right"><br>Interiores</h2>
+                </div>
+                <div class="col-md-6">
+                  <h2 class="text-left">Áreas<br>comunes</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="text-right">
+                    2 sótanos<br>
+                    con ascensores<br>
+                    8 oficinas<br>
+                    + elevador de autos<br>
+                    20 pisos
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <p class="text-left">
+                    Terraza y parrilla<br>
+                    Salones para eventos<br>
+                    Área de lavandería<br>
+                    Kids place<br>
+                    Lobby
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p>
+              <br>
+              <i class="fas fa-map-marker-alt fa-lg gris"></i> Jr. Teodoro Cárdenas 139 - Santa Beatriz
+              <br><br>
+              <i class="fas fa-chevron-down fa-lg gris"></i>
+              <br><br>
+              <a href="#" class="boton">QUIERO ESTE DEPA</a>
+            </p>
+          </div>
+          <div class="col-sm-7">
+            <div class="row">
+              <div class="col-md-7">
+                <img src="img/proyecto-1.jpg" class="img-fluid borde-0" alt="">
+              </div>
+              <div class="col-md-4">
+                <p>
+                  <img src="img/proyecto-2.jpg" class="img-fluid borde-1" alt="">
+                </p>
+                <p>
+                  <img src="img/proyecto-3.jpg" class="img-fluid borde-2" alt="">
+                </p>
+                <p>
+                  <img src="img/proyecto-4.jpg" class="img-fluid borde-3" alt="">
+                </p>
+              </div>
+            </div>
+            <p>
+              <img src="img/logos.jpg" class="img-fluid" alt="">
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
