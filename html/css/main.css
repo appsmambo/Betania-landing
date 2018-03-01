@@ -17,8 +17,8 @@ h1{
 }
 header{
     background:#00C0ED;
-    padding-bottom:6%;
-    padding-top:3%
+    padding-bottom:6rem;
+    padding-top:2rem
 }
 .container.menu{
     margin-bottom:60px
@@ -172,6 +172,17 @@ nav>a.activo{
     padding-bottom:56px;
     padding-top:56px
 }
+.contenedor-conocenos{
+    background-color:#F7F5F6
+}
+.contenedor-conocenos h3{
+    font-weight:400;
+    margin-top:50px
+}
+.contenedor-conocenos p img.logo{
+    height:62px;
+    margin-top:10px
+}
 .logo-proyecto{
     margin-bottom:32px
 }
@@ -230,7 +241,7 @@ input.form-control{
     border-radius:15px
 }
 input.boton,
-a.boton{
+.contenedor-proyectos a.boton{
     background-color:#FFBE2A;
     font-weight:700;
     opacity:1;
@@ -246,7 +257,7 @@ a.boton{
     border-left:none;
     border-right:none
 }
-a.boton{
+.contenedor-proyectos a.boton{
     display:inline-block;
     width:200px
 }
@@ -256,6 +267,34 @@ a.boton{
 }
 .gris{
     opacity:.5
+}
+footer{
+    background-color:#2C2A2B;
+    padding-top:2rem;
+    padding-bottom:5rem;
+    color:#fff
+}
+footer .social{
+    background-color:#fff;
+    width:32px;
+    height:32px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    display: inline-block;
+    text-align: center;
+    line-height: 32px;
+    color: #2C2A2B;
+}
+footer a{
+    color:#fff
+}
+.edificio,
+.visible{
+    display:block
+}
+.oculto{
+    display:none
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -283,12 +322,54 @@ a.boton{
         padding: 0 2em;
     }
     h1{
+        font-size:20px;
         padding: .5em 0;
     }
     .header-logo,
     .header-right{
         width: 100%;
         text-align: center;
+    }
+    .menu{
+        padding-top:12px
+    }
+    header{
+        padding-top:0
+    }
+    .container.menu{
+        margin-bottom:0
+    }
+    .container.formulario{
+        padding-left:0;
+        padding-right:0
+    }
+    .contenedor-formulario{
+        padding:12px 6px
+    }
+    .contenedor-menu,
+    .logos{
+        display:none
+    }
+    .borde-1,
+    .borde-2,
+    .borde-3{
+        width:100%
+    }
+    .contenedor-proyectos{
+        padding-bottom:0
+    }
+    .contenedor-conocenos h3{
+        margin-top:0
+    }
+    .edificio,
+    .visible{
+       display:none
+    }
+    .oculto{
+        display:block
+    }
+    footer{
+        text-align:center
     }
 }
  
