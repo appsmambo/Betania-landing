@@ -7,26 +7,67 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="bxslider/jquery.bxslider.min.css">
     <link rel="stylesheet" href="css/main.css">
     <title>Betania</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="bxslider/vendor/jquery.easing.1.3.js"></script>
+    <script src="bxslider/jquery.bxslider.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/smooth-scroll.min.js"></script>
+    <script>
+      var slider;
+      var scroll = new SmoothScroll('a[href*="#"]',{
+        offset:100
+      });
+      $(function() {
+        if (screen.width >= 768) {
+          $('.contenedor-proyectos').waypoint({
+            handler: function(direction) {
+              $('header, main').toggleClass('scroll');
+              $('#menuHome, #menuProyectos').toggleClass('activo');
+            },
+            offset:200
+          });
+        }
+        $('.contenedor-conocenos').waypoint({
+          handler: function(direction) {
+            $('#menuProyectos, #menuConocenos').toggleClass('activo');
+          },
+          offset:170
+        });
+        slider = $('.slider').bxSlider({
+          pager:false,
+          controls:false,
+          adaptiveHeight:true
+        });
+        $('.boton-proyecto').click(function(){
+          var proyecto = parseInt($(this).data('slider'));
+          slider.goToSlide(proyecto-1);
+          return false;
+        });
+      });
+    </script>
   </head>
   <body>
     <header class="container-fluid clearfix">
       <div class="container menu">
         <div class="header-logo">
-          <img src="img/logo-betania-blanco.svg" alt="Betania Inmobiliaria" class="img-fluid">
+          <img src="img/logo-betania-blanco.svg" alt="Betania Inmobiliaria" class="img-fluid logo">
+          <img src="img/logo-betania-color.svg" alt="Betania Inmobiliaria" class="img-fluid logo-scroll">
         </div>
         <div class="header-right">
-          
           <nav>
-            <a href="#" class="activo">HOME</a>
-            <a href="#">NUESTROS PROYECTOS</a>
-            <a href="#">CONÓCENOS</a>
+            <a data-scroll id="menuHome" href="#" class="activo">HOME</a>
+            <a data-scroll id="menuProyectos" href="#nuestrosProyectos">NUESTROS PROYECTOS</a>
+            <a data-scroll id="menuConocenos" href="#conocenos">CONÓCENOS</a>
             <a href="#" class="boton">COMPRA TU DEPA AQUÍ</a>
           </nav>
         </div>
         <div class="clearfix"></div>
       </div>
+    </header>
+    <main class="container-fluid clearfix">
       <div class="container formulario">
         <div class="row">
           <div class="col-md-6">
@@ -50,6 +91,11 @@
                   <div class="col-md-8 offset-md-2 text-center">
                     <select class="inputbox">
                       <option>SELECCIONA UN PROYECTO</option>
+                      <option>Metropoli</option>
+                      <option>Mar Azul</option>
+                      <option>Cetrum</option>
+                      <option>Alameda</option>
+                      <option>La Bandera</option>
                     </select>
                   </div>
                 </div>
@@ -87,112 +133,490 @@
           </div>
         </div>
       </div>
-    </header>
-    <section class="container contenedor-menu">
-      <div class="row">
-        <div class="col-md-4 col-lg-2">
-          <img src="img/logo-betania-color.svg" alt="Betania Inmobiliaria" class="img-fluid">
-        </div>
-        <div class="col-md-8 col-lg-10">
-          <div class="menu float-right">
-            <a href="#">HOME</a>
-            <a href="#" class="activo">NUESTROS PROYECTOS</a>
-            <a href="#">CONÓCENOS</a>
-            <a href="#" class="boton">COMPRA TU DEPA AQUÍ</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="container-fluid contenedor-proyectos">
+    </main>
+    <section id="nuestrosProyectos" class="container-fluid contenedor-proyectos">
       <div class="container">
-        <div class="row">
-          <div class="col-sm-5 text-center">
-            <img src="img/logo-metropoli.png" class="img-fluid logo-proyecto" alt="">
-            <div class="info-proyecto">
-              <div class="row">
-                <div class="col-6">
-                  <h2 class="text-right"><br>Interiores</h2>
-                </div>
-                <div class="col-6">
-                  <h2 class="text-left">Áreas<br>comunes</h2>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <p class="text-right">
-                    2 sótanos<br>
-                    con ascensores<br>
-                    8 oficinas<br>
-                    + elevador de autos<br>
-                    20 pisos
-                  </p>
-                </div>
-                <div class="col-6">
-                  <p class="text-left">
-                    Terraza y parrilla<br>
-                    Salones para eventos<br>
-                    Área de lavandería<br>
-                    Kids place<br>
-                    Lobby
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p>
-              <br>
-              <i class="fas fa-map-marker-alt fa-lg gris"></i> Jr. Teodoro Cárdenas 139 - Santa Beatriz
-              <br><br>
-              <i class="fas fa-chevron-down fa-lg gris"></i>
-              <br><br>
-              <a href="#" class="boton">QUIERO ESTE DEPA</a>
-            </p>
-          </div>
-          <div class="col-sm-7">
+        <div class="slider">
+          <div class="info-proyecto" id="proyectoMetropoli">
+            <!-- METROPOLI -->
             <div class="row">
-              <div class="col-md-7">
-                <img src="img/proyecto-1.jpg" class="img-fluid borde-0" alt="">
+              <div class="col-sm-5">
+                <img src="img/logo-metropoli.png" class="img-fluid logo-proyecto" alt="">
+                <div class="clearfix"></div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/oficinas.svg" alt="">
+                  <br>
+                  8 Oficinas
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/ascensor.svg" alt="">
+                  <br>
+                  Sótanos con ascensor
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/areas-verdes.svg" alt="">
+                  <br>
+                  Áreas verdes
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/lobby.svg" alt="">
+                  <br>
+                  Lobby
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/sum.svg" alt="">
+                  <br>
+                  SUM
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/terraza-parrilla.svg" alt="">
+                  <br>
+                  Terraza y parrilla
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/salones-para-eventos.svg" alt="">
+                  <br>
+                  Salones para eventos
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/lavanderia.svg" alt="">
+                  <br>
+                  Área de lavandería
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/kids-place.svg" alt="">
+                  <br>
+                  Kids place
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/cardio-gym.svg" alt="">
+                  <br>
+                  Cardio gym
+                </div>
+                <div class="clearfix"></div>
+                <p class="text-center">
+                  <br>
+                  <i class="fas fa-map-marker-alt fa-lg gris"></i> Jr. Teodoro Cárdenas 139, Santa Beatriz
+                  <br><br>
+                  <i class="fas fa-chevron-down fa-lg gris"></i>
+                  <br><br>
+                  <a href="#" class="boton">QUIERO ESTE DEPA</a>
+                </p>
               </div>
-              <div class="col-md-4">
-                <p>
-                  <img src="img/proyecto-2.jpg" class="img-fluid borde-1" alt="">
-                </p>
-                <p>
-                  <img src="img/proyecto-3.jpg" class="img-fluid borde-2" alt="">
-                </p>
-                <p>
-                  <img src="img/proyecto-4.jpg" class="img-fluid borde-3" alt="">
+              <div class="col-sm-7">
+                <div class="row no-gutters">
+                  <div class="col-md-7">
+                    <img src="img/metropoli-1.jpg" class="img-fluid borde-0" alt="">
+                  </div>
+                  <div class="col-md-4">
+                    <div class="miniatura">
+                      <img src="img/metropoli-2.jpg" class="img-fluid borde-1" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/metropoli-3.jpg" class="img-fluid borde-2" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/metropoli-4.jpg" class="img-fluid borde-3" alt="">
+                    </div>
+                  </div>
+                </div>
+                <p class="text-center botones-proyecto">
+                  <a href="#" data-slider="1" class="boton-proyecto activo"><img src="img/proyecto-metropoli.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="2" class="boton-proyecto"><img src="img/proyecto-marazul.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="3" class="boton-proyecto"><img src="img/proyecto-cetrum.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="4" class="boton-proyecto"><img src="img/proyecto-labandera.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="5" class="boton-proyecto"><img src="img/proyecto-alameda.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
                 </p>
               </div>
             </div>
-            <p>
-              <img src="img/logos.jpg" class="img-fluid logos" alt="">
-            </p>
+          </div>
+          <div class="info-proyecto" id="proyectoMarAzul">
+            <!-- MAR AZUL -->
+            <div class="row">
+              <div class="col-sm-5">
+                <img src="img/logo-marazul.png" class="img-fluid logo-proyecto" alt="">
+                <div class="clearfix"></div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/sala-comedor.svg" alt="">
+                  <br>
+                  Sala comedor
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/dormitorio.svg" alt="">
+                  <br>
+                  Dormitorio
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/cocina.svg" alt="">
+                  <br>
+                  Cocina
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/ascensor.svg" alt="">
+                  <br>
+                  5 ascensores directos
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/lobby.svg" alt="">
+                  <br>
+                  Lobby
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/sum.svg" alt="">
+                  <br>
+                  SUM
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/terraza-parrilla.svg" alt="">
+                  <br>
+                  Terraza y zona de parrilla
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/cardio-gym.svg" alt="">
+                  <br>
+                  Cardio gym
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/lavanderia.svg" alt="">
+                  <br>
+                  Lavandería
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/tendales.svg" alt="">
+                  <br>
+                  Zona de tendal
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/kids-place.svg" alt="">
+                  <br>
+                  2 Kids place
+                </div>
+                <div class="clearfix"></div>
+                <p class="text-center">
+                  <br>
+                  <i class="fas fa-map-marker-alt fa-lg gris"></i> Av. La paz 1025, San Miguel
+                  <br><br>
+                  <i class="fas fa-chevron-down fa-lg gris"></i>
+                  <br><br>
+                  <a href="#" class="boton">QUIERO ESTE DEPA</a>
+                </p>
+              </div>
+              <div class="col-sm-7">
+                <div class="row no-gutters">
+                  <div class="col-md-7">
+                    <img src="img/marazul1.jpg" class="img-fluid borde-0" alt="">
+                  </div>
+                  <div class="col-md-4">
+                    <div class="miniatura">
+                      <img src="img/marazul2.jpg" class="img-fluid borde-1" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/marazul3.jpg" class="img-fluid borde-2" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/marazul4.jpg" class="img-fluid borde-3" alt="">
+                    </div>
+                  </div>
+                </div>
+                <p class="text-center botones-proyecto">
+                  <a href="#" data-slider="1" class="boton-proyecto"><img src="img/proyecto-metropoli.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="2" class="boton-proyecto activo"><img src="img/proyecto-marazul.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="3" class="boton-proyecto"><img src="img/proyecto-cetrum.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="4" class="boton-proyecto"><img src="img/proyecto-labandera.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="5" class="boton-proyecto"><img src="img/proyecto-alameda.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="info-proyecto" id="proyectoCentrum">
+            <!-- CENTRUM -->
+            <div class="row">
+              <div class="col-sm-5">
+                <img src="img/logo-cetrum.png" class="img-fluid logo-proyecto" alt="">
+                <div class="clearfix"></div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/sala-comedor.svg" alt="">
+                  <br>
+                  Sala comedor
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/cocina.svg" alt="">
+                  <br>
+                  Cocina
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/dormitorio.svg" alt="">
+                  <br>
+                  Dormitorio
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/sotano.svg" alt="">
+                  <br>
+                  2 sótanos
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/lobby.svg" alt="">
+                  <br>
+                  Lobby
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/internet-room.svg" alt="">
+                  <br>
+                  Internet Room
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/area-jardin.svg" alt="">
+                  <br>
+                  Área de jardines
+                </div>
+                <div class="clearfix"></div>
+                <p class="text-center">
+                  <br>
+                  <i class="fas fa-map-marker-alt fa-lg gris"></i> Manuel Irribarren 1259, Surquillo
+                  <br><br>
+                  <i class="fas fa-chevron-down fa-lg gris"></i>
+                  <br><br>
+                  <a href="#" class="boton">QUIERO ESTE DEPA</a>
+                </p>
+              </div>
+              <div class="col-sm-7">
+                <div class="row no-gutters">
+                  <div class="col-md-7">
+                    <img src="img/cetrum1.jpg" class="img-fluid borde-0" alt="">
+                  </div>
+                  <div class="col-md-4">
+                    <div class="miniatura">
+                      <img src="img/cetrum2.jpg" class="img-fluid borde-1" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/cetrum3.jpg" class="img-fluid borde-2" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/cetrum4.jpg" class="img-fluid borde-3" alt="">
+                    </div>
+                  </div>
+                </div>
+                <p class="text-center botones-proyecto">
+                  <a href="#" data-slider="1" class="boton-proyecto"><img src="img/proyecto-metropoli.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="2" class="boton-proyecto"><img src="img/proyecto-marazul.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="3" class="boton-proyecto activo"><img src="img/proyecto-cetrum.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="4" class="boton-proyecto"><img src="img/proyecto-labandera.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="5" class="boton-proyecto"><img src="img/proyecto-alameda.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="info-proyecto" id="proyectoMarAzul">
+            <!-- PLAZA LA BANDERA -->
+            <div class="row">
+              <div class="col-sm-5">
+                <img src="img/logo-labandera.png" class="img-fluid logo-proyecto" alt="">
+                <div class="clearfix"></div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/ascensor.svg" alt="">
+                  <br>
+                  5 ascensores
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/3sotanos-depositos.svg" alt="">
+                  <br>
+                  3 sótanos + depósito
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/15pisos.svg" alt="">
+                  <br>
+                  15 pisos
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/parrilla.svg" alt="">
+                  <br>
+                  Área de parrilla
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/sum.svg" alt="">
+                  <br>
+                  SUM
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/area-de-juegos.svg" alt="">
+                  <br>
+                  Área de juegos
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/hall.svg" alt="">
+                  <br>
+                  Hall de ingreso
+                </div>
+                <div class="clearfix"></div>
+                <p class="text-center">
+                  <br>
+                  <i class="fas fa-map-marker-alt fa-lg gris"></i> Plaza de la Bandera 161, Pueblo Libre
+                  <br><br>
+                  <i class="fas fa-chevron-down fa-lg gris"></i>
+                  <br><br>
+                  <a href="#" class="boton">QUIERO ESTE DEPA</a>
+                </p>
+              </div>
+              <div class="col-sm-7">
+                <div class="row no-gutters">
+                  <div class="col-md-7">
+                    <img src="img/bandera1.jpg" class="img-fluid borde-0" alt="">
+                  </div>
+                  <div class="col-md-4">
+                    <div class="miniatura">
+                      <img src="img/bandera2.jpg" class="img-fluid borde-1" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/bandera3.jpg" class="img-fluid borde-2" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/bandera4.jpg" class="img-fluid borde-3" alt="">
+                    </div>
+                  </div>
+                </div>
+                <p class="text-center botones-proyecto">
+                  <a href="#" data-slider="1" class="boton-proyecto"><img src="img/proyecto-metropoli.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="2" class="boton-proyecto"><img src="img/proyecto-marazul.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="3" class="boton-proyecto"><img src="img/proyecto-cetrum.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="4" class="boton-proyecto activo"><img src="img/proyecto-labandera.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="5" class="boton-proyecto"><img src="img/proyecto-alameda.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="info-proyecto" id="proyectoAlameda">
+            <!-- ALAMEDA -->
+            <div class="row">
+              <div class="col-sm-5">
+                <img src="img/logo-alameda.png" class="img-fluid logo-proyecto" alt="">
+                <div class="clearfix"></div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/sala.svg" alt="">
+                  <br>
+                  Sala
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/comedor-cocina.svg" alt="">
+                  <br>
+                  Comedor y cocina integrados
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/dormitorio.svg" alt="">
+                  <br>
+                  Dormitorios
+                </div>
+                <div class="info-interior text-center">
+                  <img src="img/interiores/banos.svg" alt="">
+                  <br>
+                  Baños
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/sum.svg" alt="">
+                  <br>
+                  4 SUM´s
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/terraza-parrilla.svg" alt="">
+                  <br>
+                  4 Terrazas con Zona de Parrilla
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/kids-place.svg" alt="">
+                  <br>
+                  4 Kids place
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/lavanderia.svg" alt="">
+                  <br>
+                  2 Lavanderias
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/tendales.svg" alt="">
+                  <br>
+                  3 tendales
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/cardio-gym.svg" alt="">
+                  <br>
+                  1 Cardio Gym
+                </div>
+                <div class="info-area-comun text-center">
+                  <img src="img/areas-comunes/estacion-bicicleta.svg" alt="">
+                  <br>
+                  1 Estacionamiento de bicicletas
+                </div>
+                <div class="clearfix"></div>
+                <p class="text-center">
+                  <br>
+                  <i class="fas fa-map-marker-alt fa-lg gris"></i> Jr. Mariscal Ramón Castilla 784, San Miguel
+                  <br><br>
+                  <i class="fas fa-chevron-down fa-lg gris"></i>
+                  <br><br>
+                  <a href="#" class="boton">QUIERO ESTE DEPA</a>
+                </p>
+              </div>
+              <div class="col-sm-7">
+                <div class="row no-gutters">
+                  <div class="col-md-7">
+                    <img src="img/alameda1.jpg" class="img-fluid borde-0" alt="">
+                  </div>
+                  <div class="col-md-4">
+                    <div class="miniatura">
+                      <img src="img/alameda2.jpg" class="img-fluid borde-1" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/alameda3.jpg" class="img-fluid borde-2" alt="">
+                    </div>
+                    <div class="miniatura">
+                      <img src="img/alameda4.jpg" class="img-fluid borde-3" alt="">
+                    </div>
+                  </div>
+                </div>
+                <p class="text-center botones-proyecto">
+                  <a href="#" data-slider="1" class="boton-proyecto"><img src="img/proyecto-metropoli.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="2" class="boton-proyecto"><img src="img/proyecto-marazul.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="3" class="boton-proyecto"><img src="img/proyecto-cetrum.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="4" class="boton-proyecto"><img src="img/proyecto-labandera.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                  <a href="#" data-slider="5" class="boton-proyecto activo"><img src="img/proyecto-alameda.png" alt="" class="img-fluid"></a>
+                  &nbsp;&nbsp;
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="container contenedor-menu">
-      <div class="row">
-        <div class="col-md-4 col-lg-2">
-          <img src="img/logo-betania-color.svg" alt="Betania Inmobiliaria" class="img-fluid">
-        </div>
-        <div class="col-md-8 col-lg-10">
-          <div class="menu float-right">
-            <a href="#">HOME</a>
-            <a href="#">NUESTROS PROYECTOS</a>
-            <a href="#" class="activo">CONÓCENOS</a>
-            <a href="#" class="boton">COMPRA TU DEPA AQUÍ</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="container-fluid contenedor-conocenos">
+    <section id="conocenos" class="container-fluid contenedor-conocenos">
       <div class="container">
         <div class="row">
           <div class="col-sm-5">
             <h3>Constructora <strong>Betania</strong></h3>
             <p>
-              Somos una empresa de ingeniería, desarrollo y construcción de viviendas, con actividades en la operación de infraestructura y el desarrollo de edificios. Nuestra experiencia de más de 14 años en el mercado peruano nos da la solidez y el conocimiento para la ejecución de proyectos de alta complejidad técnica y financiera, lo que nos permite ofrecer viviendas con altos estándares de calidad y sobre todo satisfacer las necesidades y exigencias de nuestros clientes.
+              Somos una empresa de ingeniería, desarrollo y construcción de viviendas, con actividades en la operación de infraestructura y el desarrollo de edificios. Nuestra experiencia de 16 años en el mercado peruano nos da la solidez y el conocimiento para la ejecución de proyectos de alta complejidad técnica y financiera, lo que nos permite ofrecer viviendas con altos estándares de calidad y sobre todo satisfacer las necesidades y exigencias de nuestros clientes.
               <br>
               <img src="img/bloque-1.jpg" class="img-fluid oculto" alt="">
               <br>
@@ -202,11 +626,11 @@
               <br><br>
               <strong>MISIÓN</strong>
               <br>
-              Convertirnos en una empresa constructora eficiente, resaltando en el mmercado por medio de la responsabilidad y eficiencia, cumpliendo a tiempo con todos y cada uno de los trabajos encomendados, lograr que todo nuestro personal se sienta motivado y orgulloso de pertenecer a nuesra organización, fomentando el control y la calidad de nuestro servicio, buscando siempre dar más de sí mismo y con esto buscar la satisfacción de nuestro cliente.
+              Convertirnos en una empresa constructora eficiente, resaltando en el mercado por medio de la responsabilidad y eficiencia, cumpliendo a tiempo con todos y cada uno de los trabajos encomendados, lograr que todo nuestro personal se sienta motivado y orgulloso de pertenecer a nuestra organización, fomentando el control y la calidad de nuestro servicio, buscando siempre dar más de sí mismo y con esto buscar la satisfacción de nuestro cliente.
               <br><br>
               <strong>ASOCIACIONES</strong>
               <br>
-              <img src="img/logo-asei.png" class="img-fluid logo" alt="">&nbsp;&nbsp;&nbsp;<img src="img/logo-capeco.png" class="img-fluid logo" alt="">
+              <img src="img/logo-asei.png" class="img-fluid logo-asociacion" alt="">&nbsp;&nbsp;&nbsp;<img src="img/logo-capeco.png" class="img-fluid logo-asociacion" alt="">
             </p>
           </div>
           <div class="col-sm-7">
@@ -230,9 +654,9 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#">HOME</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">NUESTROS PROYECTOS</a>
+            <a href="#nuestrosProyectos">NUESTROS PROYECTOS</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">CONOCENOS</a>
+            <a href="#conocenos">CONOCENOS</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             |
           </div>
@@ -247,16 +671,11 @@
             <a href="#" class="social"><i class="fab fa-youtube"></i></a>
             <br><br>
             (01) 437-2995  /  informes@betania.com.pe<br>
-Av. El Derby N° 254, of. 1203 Edificio Lima Central Tower<br>
-Santiago de surco - Lima
+            Av. El Derby N° 254, of. 1203 Edificio Lima Central Tower<br>
+            Santiago de surco - Lima
           </div>
         </div>
       </div>
     </footer>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
