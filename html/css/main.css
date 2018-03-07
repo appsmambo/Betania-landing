@@ -19,7 +19,6 @@ h1{
 header{
     background:#00C0ED;
     position:fixed;
-    height:156px;
     top:0;
     z-index:999;
     -webkit-transition:all .3s ease;
@@ -33,28 +32,33 @@ header img.logo-scroll{
 header.scroll{
     background:rgba(255,255,255,.95);
     padding:10px 0;
-    height:136px
+    height:96px
 }
 header.scroll img.logo{
     display:none
 }
 header.scroll img.logo-scroll{
-    display:block
+    display:block;
+    height:80px
 }
-header.scroll nav>a, nav>a:hover, nav>a.activo{
-    color:#000
+header.scroll nav>a, header.scroll nav>a:hover, header.scroll nav>a.activo{
+    color:#000;
+    font-size:14px;
+}
+header.scroll nav>a.boton{
+    padding:0 20px;
 }
 header.scroll .container.menu{
     padding-top:0;
     margin-bottom:0
 }
 header.scroll .header-right{
-    padding-top:24px
+    padding-top:18px
 }
 main{
     background:#00C0ED;
     padding-bottom:6rem;
-    padding-top:5rem;
+    padding-top:3rem;
     -webkit-transition:all .3s ease;
     -moz-transition:all .3s ease;
     -o-transition:all .3s ease;
@@ -64,7 +68,7 @@ main.scroll{
     background:#fff
 }
 .container.menu{
-    margin-bottom:60px
+    
 }
 .header-logo,
 .header-right{
@@ -76,7 +80,7 @@ main.scroll{
     width:20%
 }
 .header-logo img{
-    max-width:180px
+    max-width:170px
 }
 .header-right label{
     position:absolute;
@@ -113,7 +117,7 @@ main.scroll{
 .header-right{
     width:80%;
     text-align:right;
-    padding-top:42px
+    padding-top:25px
 }
 #open{
     display:none
@@ -123,8 +127,8 @@ nav>a,
 .menu>a{
     position:relative;
     display:inline-block;
-    font-size:16px;
-    line-height:40px;
+    font-size:15px;
+    line-height:35px;
     padding:0;
     margin:0 2.5em;
     -webkit-transition:all .3s ease;
@@ -178,7 +182,7 @@ nav>a.boton,
     border-radius:18px;
     text-decoration:none;
     color:#fff;
-    padding:0 35px;
+    padding:0 30px;
     border-bottom:3px solid #E88D1A
 }
 nav>a.boton:hover:after,
@@ -191,7 +195,8 @@ nav>a.activo{
     color:#fff
 }
 .menu{
-    padding-top:32px
+    padding-bottom:20px;
+    padding-top:20px
 }
 .menu>a,
 .menu>a:hover,
@@ -348,7 +353,10 @@ footer{
     background-color:#2C2A2B;
     padding-top:2rem;
     padding-bottom:5rem;
-    color:#fff
+    color:rgba(255,255,255,.75)
+}
+footer img {
+    opacity:.75
 }
 footer .social{
     background-color:#fff;
